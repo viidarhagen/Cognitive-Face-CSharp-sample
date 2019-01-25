@@ -28,8 +28,7 @@ namespace FaceTutorial
         // NOTE: Free trial subscription keys are generated in the westcentralus
         // region, so if you are using a free trial subscription key, you should
         // not need to change this region.
-        private const string faceEndpoint =
-            "https://westcentralus.api.cognitive.microsoft.com";
+        private const string faceEndpoint ="https://northeurope.api.cognitive.microsoft.com/";
 
         private readonly IFaceClient faceClient = new FaceClient(
             new ApiKeyServiceClientCredentials(subscriptionKey),
@@ -114,7 +113,7 @@ namespace FaceTutorial
                     // Draw a rectangle on the face.
                     drawingContext.DrawRectangle(
                         Brushes.Transparent,
-                        new Pen(Brushes.Red, 2),
+                        new Pen(Brushes.Red, 5),
                         new Rect(
                             face.FaceRectangle.Left * resizeFactor,
                             face.FaceRectangle.Top * resizeFactor,
@@ -235,7 +234,7 @@ namespace FaceTutorial
             // Add the gender, age, and smile.
             sb.Append(face.FaceAttributes.Gender);
             sb.Append(", ");
-            sb.Append(face.FaceAttributes.Age);
+            sb.Append("age:" + face.FaceAttributes.Age);
             sb.Append(", ");
             sb.Append(String.Format("smile {0:F1}%, ", face.FaceAttributes.Smile * 100));
 
